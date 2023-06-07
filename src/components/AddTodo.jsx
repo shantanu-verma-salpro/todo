@@ -1,4 +1,4 @@
-import React, { useRef ,useCallback} from "react";
+import React, { useRef, useCallback } from "react";
 
 const AddTodo = ({ addTodo }) => {
   const taskRef = useRef(null);
@@ -13,11 +13,11 @@ const AddTodo = ({ addTodo }) => {
 
   return (
     <>
-      <input type="text" ref={taskRef} />
+      <label htmlFor="taskInput">New Task:</label>
+      <input type="text" id="taskInput" ref={taskRef} />
       <button onClick={submitTask}>Add</button>
     </>
   );
 };
 
-const MemoizedAddTodo = React.memo(AddTodo);
-export default MemoizedAddTodo;
+export default AddTodo;
