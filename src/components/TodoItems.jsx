@@ -2,13 +2,15 @@ import React from "react";
 
 const TodoItems = ({ note }) => {
   return (
-    <ul>
-      {note.map((x, i) => (
-        <li key={i}>{x}</li>
-      ))}
-    </ul>
+    <div>
+      <h2>Tasks:</h2>
+      <ul>
+        {note.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
-const MemoizedTodoItems = React.memo(TodoItems);
-export default MemoizedTodoItems;
+export default TodoItems;
