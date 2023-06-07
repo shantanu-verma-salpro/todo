@@ -1,6 +1,7 @@
 ---
 import Todo from "../components/Todo";
 import { SEO } from "astro-seo";
+import { Schema } from "astro-seo-schema"
 
 
 ---
@@ -17,7 +18,19 @@ import { SEO } from "astro-seo";
         }
       }}
     />
-
+	<Schema
+            item={{
+                "@context": "https://schema.org",
+                "@type": "Person",
+                name: "Shanu",
+                alternateName: "Shanu",
+                alumniOf: {
+                    "@type": "CollegeOrUniversity",
+                    name: ["Earth"],
+                },
+                knowsAbout: ["Full Stack", "Computer Science"],
+            }}
+        />
   <head>
   </head>
     <body> <Todo client:load /></body>
