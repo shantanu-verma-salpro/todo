@@ -1,7 +1,23 @@
-import { useState } from "react";
+import React, { useRef ,useCallback} from "react";
 
-export default function AddTodo({ todoList, addTodo }) {
-    const [task, setTask] = useState("");
-    const submitTask = () => { addTodo([...todoList, task]); setTask("") };
-    return <><input type="text" value={task} onChange={e => setTask(e.target.value)} /><button onClick={submitTask}>Add</button></>
-}
+const AddTodo = ({ addTodo }) => {
+  const taskRef = useRef(null);
+
+  const submitTask = useCallback(() => {
+    const task = taskRef.current.value.trim();
+    if (task !== "") {
+      addTodo(task);
+      taskRef.current.value = "";
+    }
+  }, [addTodo]);
+
+  return (
+    <>
+      <input type="text" ref={taskRef} />
+      <button onClick={submitTask}>Add</button>
+    </>
+  );
+};
+
+const MemoizedAddTodo = React.memo(AddTodo);
+export default MemoizedAddTodo;

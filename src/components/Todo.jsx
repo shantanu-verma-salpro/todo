@@ -1,12 +1,21 @@
-import { useState } from "react";
-import TodoItems from "./TodoItems";
-import AddTodo from "./AddTodo";
-export default function Todo(){
-    const [todo,setTodo] = useState(["hello","hi"]);
-    return (
-        <>
-        <TodoItems note={todo} />
-        <AddTodo todoList={todo} addTodo={setTodo} />
-        </>
-    );
-}
+import React, { useState, useCallback } from "react";
+import TodoItems from '../components/TodoItems';
+import AddTodo from '../components/AddTodo'
+const Todo = () => {
+  const [todo, setTodo] = useState(["hello pom", "hi tarbuj"]);
+  const handleAddTodo = useCallback(
+    (task) => {
+      setTodo((prevTodo) => [...prevTodo, "pom is " + task]);
+    },
+    [setTodo]
+  );
+  return (
+    <>
+      <TodoItems note={todo} />
+      <AddTodo addTodo={handleAddTodo} />
+    </>
+  );
+};
+
+const MemoizedTodo = React.memo(Todo);
+export default MemoizedTodo;

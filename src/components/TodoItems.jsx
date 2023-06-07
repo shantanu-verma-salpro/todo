@@ -1,7 +1,14 @@
-import { useMemo } from "react";
-export default function TodoItems({note}){
-    const renderTodo = useMemo(()=>{
-        return <ul>{note.map((x,i)=><li key={i}>{x}</li>)}</ul>;
-    },[note])
-    return <>{renderTodo}</>;
-}
+import React from "react";
+
+const TodoItems = ({ note }) => {
+  return (
+    <ul>
+      {note.map((x, i) => (
+        <li key={i}>{x}</li>
+      ))}
+    </ul>
+  );
+};
+
+const MemoizedTodoItems = React.memo(TodoItems);
+export default MemoizedTodoItems;
