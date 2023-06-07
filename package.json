@@ -20,6 +20,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "astro-seo-schema":"^2.0.0",
-    "astro-seo":"^0.17.0"
+    "astro-seo":"^0.7.4"
   }
 }
