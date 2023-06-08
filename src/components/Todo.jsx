@@ -2,16 +2,14 @@ import React, { useRef, useState } from "react";
 
 const Todo = () => {
     const [tasks, setTasks] = useState([]);
-    const inputRefs = useRef({
-        title: null,
-        description: null,
-        priority: null
-    });
+    const titleRef = useRef(null);
+    const descriptionRef = useRef(null);
+    const priorityRef = useRef(null);
 
-    const handleTaskSubmit = () => {
-        const title = inputRefs.current.title.value.trim();
-        const description = inputRefs.current.description.value.trim();
-        const priority = inputRefs.current.priority.value.trim();
+    const submitTask = () => {
+        const title = titleRef.current.value.trim();
+        const description = descriptionRef.current.value.trim();
+        const priority = priorityRef.current.value.trim();
 
         if (title && description && priority) {
             const newTask = {
@@ -19,40 +17,56 @@ const Todo = () => {
                 description,
                 priority,
                 timestamp: new Date().toLocaleDateString(),
-                isCompleted: false
+                isCompleted: false,
+                id: Date.now(),
             };
 
             setTasks((prevTasks) => [...prevTasks, newTask]);
 
-            // Reset input values
-            inputRefs.current.title.value = "";
-            inputRefs.current.description.value = "";
-            inputRefs.current.priority.value = "";
+            titleRef.current.value = "";
+            descriptionRef.current.value = "";
+            priorityRef.current.value = "";
         }
     };
 
+    const deleteTask = (id) => {
+        setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
+    };
+
+    const toggleTaskState = (id) => {
+        setTasks((prevTasks) =>
+            prevTasks.map((task) =>
+                task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
+            )
+        );
+    };
+
     const renderTaskInputBox = () => (
-        <>
+        <div>
             <label htmlFor="title">Title</label>
-            <input ref={inputRefs.current.title} id="title" type="text" />
+            <input ref={titleRef} id="title" type="text" />
             <label htmlFor="desc">Description</label>
-            <input ref={inputRefs.current.description} id="desc" type="text" />
+            <input ref={descriptionRef} id="desc" type="text" />
             <label htmlFor="pr">Priority</label>
-            <input ref={inputRefs.current.priority} id="pr" type="number" />
-        </>
+            <input ref={priorityRef} id="pr" type="number" />
+        </div>
     );
 
     const renderSubmitButton = () => (
-        <button onClick={handleTaskSubmit}>Add Task</button>
+        <button onClick={submitTask}>Add Task</button>
     );
 
     const renderTaskPanel = () =>
         tasks.map((task) => (
-            <div key={task.timestamp}>
+            <div key={task.id}>
                 <div>{task.title}</div>
                 <div>{task.description}</div>
                 <div>{task.priority}</div>
                 <div>{task.timestamp}</div>
+                <button onClick={() => deleteTask(task.id)}>Delete</button>
+                <button onClick={() => toggleTaskState(task.id)}>
+                    {task.isCompleted ? "Mark Uncomplete" : "Mark Complete"}
+                </button>
             </div>
         ));
 
