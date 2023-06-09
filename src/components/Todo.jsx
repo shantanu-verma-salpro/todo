@@ -1,14 +1,40 @@
 import React, { useRef, useState } from "react";
 import "../styles/todo.css"
-
-
-
+import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
+const customStyles = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+        padding:'0px',
+        border:'0px',
+        background: 'transparent'
+    },
+};
+Modal.setAppElement('#root');
 const Todo = () => {
     const [tasks, setTasks] = useState([]);
     const titleRef = useRef(null);
     const descriptionRef = useRef(null);
     const priorityRef = useRef(null);
+    const [modalIsOpen, setIsOpen] = React.useState(false);
 
+    function openModal() {
+        setIsOpen(true);
+    }
+
+    function afterOpenModal() {
+        // references are now sync'd and can be accessed.
+        ;
+    }
+
+    function closeModal() {
+        setIsOpen(false);
+    }
     const submitTask = () => {
         const title = titleRef.current.value.trim();
         const description = descriptionRef.current.value.trim();
@@ -75,19 +101,31 @@ const Todo = () => {
 
     return (
         <div className="container">
-            <div className="topCharacters"> <img loading="lazy" className="headerImg" src={"./head.png"} alt="A random image" /></div>
+            <div className="topCharacters"> <img className="headerImg" src={"./head.png"} alt="A random image" />
+                <img className="headerea" src={"./ea.png"} alt="A random image" />
+            </div>
             <div className="middlePanel">
                 <div className="todoPanel">
-                    {renderTaskInputBox()}
-                    {renderSubmitButton()}
+
+                    <button onClick={openModal}>Create Task</button>
+                    <Modal
+                        isOpen={modalIsOpen}
+                        onAfterOpen={afterOpenModal}
+                        onRequestClose={closeModal}
+                        style={customStyles}
+                        contentLabel="Task Creation"
+                    ><div className="taskp"> {renderTaskInputBox()} {renderSubmitButton()}<button onClick={closeModal}>Task Panel</button></div></Modal>
+
                     {renderTaskPanel()}
                 </div>
             </div>
             <div className="bottomCharacters">
-            <img  className="nezko" src={"./la.png"} alt="A random image" />
-            <img className="left_flash" src={"./fl.png"} alt="A random image" />
-            <img className="right_ino" src={"./sw.png"} alt="A random image" />
-            
+                <img className="nezko" src={"./la.png"} alt="A random image" />
+                <div>
+                    <img className="left_flash" src={"./fl.png"} alt="A random image" />
+                    <img className="right_ino" src={"./sw.png"} alt="A random image" />
+                </div>
+                <img className="tanjiro" src={"./ta.png"} alt="A random image" />
             </div>
 
         </div>
