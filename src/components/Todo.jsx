@@ -1,14 +1,14 @@
 import React, { useRef, useState } from "react";
 import "../styles/todo.css"
 
-import b1 from '../assets/2.png'
-import b2 from '../assets/3.png'
-import he from '../assets/head.png'
-import flash from '../assets/fl.png'
-import earings from '../assets/ea.png'
-import inosuke from '../assets/sw.png'
-import dem from '../assets/la.png'
-import tanjiro from '../assets/ta.png'
+import b1 from '../../public/2.png'
+import b2 from '../../public/3.png'
+import he from '../../public/head.png'
+import flash from '../../public/fl.png'
+import earings from '../../public/ea.png'
+import inosuke from '../../public/sw.png'
+import dem from '../../public/la.png'
+import tanjiro from '../../public/ta.png'
 
 const Todo = () => {
     const [tasks, setTasks] = useState([]);
