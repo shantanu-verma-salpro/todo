@@ -1,14 +1,7 @@
 import React, { useRef, useState } from "react";
 import "../styles/todo.css"
 
-import b1 from '../../public/2.png'
-import b2 from '../../public/3.png'
-import he from '../../public/head.png'
-import flash from '../../public/fl.png'
-import earings from '../../public/ea.png'
-import inosuke from '../../public/sw.png'
-import dem from '../../public/la.png'
-import tanjiro from '../../public/ta.png'
+
 
 const Todo = () => {
     const [tasks, setTasks] = useState([]);
@@ -82,7 +75,7 @@ const Todo = () => {
 
     return (
         <div className="container">
-            <div className="topCharacters"> <img loading="lazy" className="headerImg" src={he} alt="A random image" /></div>
+            <div className="topCharacters"> <img loading="lazy" className="headerImg" src={"./head.png"} alt="A random image" /></div>
             <div className="middlePanel">
                 <div className="todoPanel">
                     {renderTaskInputBox()}
@@ -91,9 +84,9 @@ const Todo = () => {
                 </div>
             </div>
             <div className="bottomCharacters">
-            <img  className="nezko" src={dem} alt="A random image" />
-            <img className="left_flash" src={flash} alt="A random image" />
-            <img className="right_ino" src={inosuke} alt="A random image" />
+            <img  className="nezko" src={"./la.png"} alt="A random image" />
+            <img className="left_flash" src={"./fl.png"} alt="A random image" />
+            <img className="right_ino" src={"./sw.png"} alt="A random image" />
             
             </div>
 
