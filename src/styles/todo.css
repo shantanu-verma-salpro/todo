@@ -1,0 +1,87 @@
+body {
+    background-color: #fbeac7;
+}
+img
+{
+    max-width: 100%;
+    min-width: 100px;
+    height: auto;
+    object-fit: scale-down;
+}
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: 150px 1fr 150px;
+    height: 100vh;
+    width: 100vw;
+    grid-gap: 10px;
+    grid-template-columns: 1fr;
+}
+
+.middlePanel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    overflow-y: scroll;
+}
+.todoPanel{
+    height: 100%;
+}
+.b1 {
+    width: 200px;
+    height: auto;
+    position: absolute;
+    bottom: -39px;
+    left: -65px;
+    transform: rotate(45deg);
+}
+.b2 {
+    width: 200px;
+    height: auto;
+    position: absolute;
+    bottom: -45px;
+    right: -55px;
+    transform: rotate(-45deg);
+}
+.topCharacters {
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+}
+.bottomCharacters{
+    overflow: hidden;
+    position: relative;
+    display: block;
+}
+img.headerImg {
+    width: 300px;
+    height: auto;
+    position: absolute;
+
+}
+img.nezko {
+    width: 150px;
+    position: absolute;
+    left: -58px;
+    bottom: 0px;
+}
+img.left_flash {
+    width: 190px;
+    bottom: -40px;
+    position: absolute;
+    left: 30px;
+}
+img.right_ino {
+    width: 150px;
+    bottom: -40px;
+    position: absolute;
+    left: 100px;
+    transform: scaleX(-1);
+}

@@ -1,4 +1,14 @@
 import React, { useRef, useState } from "react";
+import "../styles/todo.css"
+
+import b1 from '../assets/2.png'
+import b2 from '../assets/3.png'
+import he from '../assets/head.png'
+import flash from '../assets/fl.png'
+import earings from '../assets/ea.png'
+import inosuke from '../assets/sw.png'
+import dem from '../assets/la.png'
+import tanjiro from '../assets/ta.png'
 
 const Todo = () => {
     const [tasks, setTasks] = useState([]);
@@ -71,11 +81,23 @@ const Todo = () => {
         ));
 
     return (
-        <>
-            {renderTaskInputBox()}
-            {renderSubmitButton()}
-            {renderTaskPanel()}
-        </>
+        <div className="container">
+            <div className="topCharacters"> <img loading="lazy" className="headerImg" src={he} alt="A random image" /></div>
+            <div className="middlePanel">
+                <div className="todoPanel">
+                    {renderTaskInputBox()}
+                    {renderSubmitButton()}
+                    {renderTaskPanel()}
+                </div>
+            </div>
+            <div className="bottomCharacters">
+            <img  className="nezko" src={dem} alt="A random image" />
+            <img className="left_flash" src={flash} alt="A random image" />
+            <img className="right_ino" src={inosuke} alt="A random image" />
+            
+            </div>
+
+        </div>
     );
 };
 
